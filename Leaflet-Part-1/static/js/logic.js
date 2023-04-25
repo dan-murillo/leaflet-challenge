@@ -6,21 +6,48 @@ let earthquakeCircles = []
 
 function createFeatures(EarthquakeData) {
 
-    L.geoJSON(EarthquakeData);
-
     for (let i = 0; i < EarthquakeData.features.length; i++) {
+        depth = EarthquakeData.features[i].geometry.coordinates[2]
+        console.log(depth)
         earthquakeCircles.push(
             L.circle([EarthquakeData.features[i].geometry.coordinates[1], EarthquakeData.features[i].geometry.coordinates[0]], {
                 fillOpacity: 0.75,
-                color: 'red',
-                fillColor: 'yellow',
+                color: getColour(depth),
+                fillColor: getColour(depth),
                 radius: EarthquakeData.features[i].properties.mag * 5000
             }).bindPopup(`<h2>${EarthquakeData.features[i].properties.place}</h2><h3>Magnitude: ${EarthquakeData.features[i].properties.mag}</h3><hr><p>${new Date(EarthquakeData.features[i].properties.time)}</p>`)
         )
-    }
+    };
 
     createMap(earthquakeCircles);
+
+    function getColour(d) {
+        var colour;
+        if (d <= 61.6966) {
+            colour = '#24FF00'
+        } else if (d <= 126.5932) {
+            colour = '#58FF00'
+        } else if (d <= 191.4898) {
+            colour = '#8DFF00'
+        } else if (d <= 256.3864) {
+            colour = '#C2FF00'
+        } else if (d <= 321.283) {
+            colour = '#F7FF00'
+        } else if (d <= 386.1796) {
+            colour = '#FFD300'
+        } else if (d <= 451.0762) {
+            colour = '#FF9E00'
+        } else if (d <= 515.9728) {
+            colour = '#FF6900'
+        } else if (d <= 580.8694) {
+            colour = '#FF3400'
+        } else if (d > 580.8694) {
+            colour = '#FF0000'
+        };
+        return colour;
+    };
 };
+
 
 function createMap(earthquakes) {
     let streetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
