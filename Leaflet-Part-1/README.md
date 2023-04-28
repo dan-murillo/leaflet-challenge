@@ -1,4 +1,4 @@
-This folder contains a folder, an image, and a file:
+This *Leaflet-Part-1* folder contains a folder, an image, and a file:
 
 ### The *static* folder:
 

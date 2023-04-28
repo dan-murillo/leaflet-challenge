@@ -12,14 +12,14 @@ Did you know that there are approximately 385 earthquakes worldwide per week? Ac
 
 Apart from providing scientific data about natural hazards, the health of our ecosystems and environment, and the impacts of climate and land-use change, the USGS is building a new set of tools that will enable the visualisation of earthquake data among different periods. However, these visualisations are currently very limited.
 
-Hence, I created a visualistion that uses the USGS API to collect updated earthquake data of the last seven days, [you can find the link to the GeoJSON used here](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson), and displays the data as a world map with colour-coded seismic activity with size-proportional markers —*the larger the markers, the higher the magnitude of the earthquake*—. A legend was added to the map to explain the colour-coding system used —*the darker the colour, the deeper the earthquake's coordinates reported*—.
+Hence, I created a visualistion that uses the USGS API to collect updated earthquake data of the last seven days, [you can find the link to the GeoJSON used here](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson), and displays the data as a world map with colour-coded seismic activity with size-proportional markers —*the larger the markers, the higher the magnitude of the earthquake*—. A legend was added to the map to explain the colour-coding system used —*the darker the colour, the deeper the earthquake's coordinates reported*—. Once the coding process was complete, the visualisation was deployed to GitHub Pages.
 
 This repository contains the HTML, CSS, and JS code used to build the world map. The following image portrays how the visualisation looks online:
 ![image](https://github.com/daniel-r-murillo-antuna/leaflet-challenge/blob/main/Leaflet-Part-1/final-visualisation.png)
 
 ### The *Leaflet-Part-1* folder:
 
-It contains the HTML, CSS, and JS code of the world map and an image of the final visualisation.
+It contains the HTML, CSS, and JS code of the world map and an image of the final visualisation. This folder is titled 'part 1' because there was to be a part 2 of this project, which would have added more data, more overlay maps, and the visualisations of the tectonic plates. However, the development of part 2 is currently stopped.
 
 ## Data Reference
 
