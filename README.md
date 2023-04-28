@@ -19,7 +19,7 @@ This repository contains the HTML, CSS, and JS code used to build the world map.
 
 ### The *Leaflet-Part-1* folder:
 
-It contains the HTML, CSS, and JS code of the world map.
+It contains the HTML, CSS, and JS code of the world map and an image of the final visualisation.
 
 ## Data Reference
 
