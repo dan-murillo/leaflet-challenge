@@ -11,41 +11,47 @@ function createFeatures(EarthquakeData) {
         console.log(depth)
         earthquakeCircles.push(
             L.circle([EarthquakeData.features[i].geometry.coordinates[1], EarthquakeData.features[i].geometry.coordinates[0]], {
-                fillOpacity: 0.75,
+                fillOpacity: 0.5,
                 color: getColour(depth),
                 fillColor: getColour(depth),
                 radius: EarthquakeData.features[i].properties.mag * 5000
-            }).bindPopup(`<h2>${EarthquakeData.features[i].properties.place}</h2><h3>Magnitude: ${EarthquakeData.features[i].properties.mag}</h3><hr><p>${new Date(EarthquakeData.features[i].properties.time)}</p>`)
+            }).bindPopup(`<h2>${EarthquakeData.features[i].properties.place}</h2><h3>Magnitude: ${EarthquakeData.features[i].properties.mag}</h3><h3>Depth: ${depth}</h3><hr><p>${new Date(EarthquakeData.features[i].properties.time)}</p>`)
         )
     };
 
     createMap(earthquakeCircles);
 
     function getColour(d) {
-        var colour;
-        if (d <= 61.6966) {
-            colour = '#24FF00'
-        } else if (d <= 126.5932) {
-            colour = '#58FF00'
-        } else if (d <= 191.4898) {
-            colour = '#8DFF00'
-        } else if (d <= 256.3864) {
-            colour = '#C2FF00'
-        } else if (d <= 321.283) {
-            colour = '#F7FF00'
-        } else if (d <= 386.1796) {
-            colour = '#FFD300'
-        } else if (d <= 451.0762) {
-            colour = '#FF9E00'
-        } else if (d <= 515.9728) {
-            colour = '#FF6900'
-        } else if (d <= 580.8694) {
-            colour = '#FF3400'
-        } else if (d > 580.8694) {
-            colour = '#FF0000'
-        };
-        return colour;
+        return d <= 10 ? '#24FF00' :
+        d <= 20 ? '#58FF00' :
+        d <= 30 ? '#8DFF00' :
+        d <= 40 ? '#C2FF00' :
+        d <= 50 ? '#F7FF00' :
+        d <= 60 ? '#FFD300' :
+        d <= 70 ? '#FF9E00' :
+        d <= 80 ? '#FF6900' :
+        d <= 90 ? '#FF3400' :
+        '#FF0000';
     };
+        
+    const legend = L.control({
+        position: 'bottomright'
+    });
+    
+    legend.onAdd = function (map) {
+        const div = L.DomUtil.create('div', 'info legend');
+        let grades = [-10, 10, 20, 30, 40, 50, 60, 70, 80, 90];
+        let labels = [];
+    
+        for (var i=0; i<grades.length; i++) {
+            div.innerHTML += '<i style="background:' + getColour(grades[i] + 1) + '"></i>' + grades[i] + (grades[i+1] ? '&ndash;' + grades[i+1] + '<br>' : '+');
+        }
+    
+        return div;
+    };
+    
+    legend.addTo(myMap);
+    
 };
 
 
@@ -69,7 +75,23 @@ function createMap(earthquakes) {
         zoom: 2,
         layers: [streetMap, earthquakeMap]
     });
+
+    // L.control.layers(null, overlayMaps).addTo(myMap); //??
+
+    // let info = L.control({
+    //     position: 'bottomright'
+    // });
+
+    // info.onAdd = function() {
+    //     let div = L.DomUtil.create('div', 'legend');
+    //     return div;
+    // };
+    
+    // info.addTo(myMap);
+
 }
+
+
 
 
 
@@ -152,3 +174,62 @@ function createMap(earthquakes) {
 //     return Math.sqrt(population) * 50;
 //   }
 
+
+
+
+
+// function getColour(d) {
+//         var colour;
+//         if (d <= 61.6966) {
+//             colour = '#24FF00'
+//         } else if (d <= 126.5932) {
+//             colour = '#58FF00'
+//         } else if (d <= 191.4898) {
+//             colour = '#8DFF00'
+//         } else if (d <= 256.3864) {
+//             colour = '#C2FF00'
+//         } else if (d <= 321.283) {
+//             colour = '#F7FF00'
+//         } else if (d <= 386.1796) {
+//             colour = '#FFD300'
+//         } else if (d <= 451.0762) {
+//             colour = '#FF9E00'
+//         } else if (d <= 515.9728) {
+//             colour = '#FF6900'
+//         } else if (d <= 580.8694) {
+//             colour = '#FF3400'
+//         } else if (d > 580.8694) {
+//             colour = '#FF0000'
+//         };
+//         return colour;
+//     };
+
+
+
+
+
+// function getColour(d) {
+//     var colour;
+//     if (d <= 10) {
+//         colour = '#24FF00'
+//     } else if (d <= 20) {
+//         colour = '#58FF00'
+//     } else if (d <= 30) {
+//         colour = '#8DFF00'
+//     } else if (d <= 40) {
+//         colour = '#C2FF00'
+//     } else if (d <= 50) {
+//         colour = '#F7FF00'
+//     } else if (d <= 60) {
+//         colour = '#FFD300'
+//     } else if (d <= 70) {
+//         colour = '#FF9E00'
+//     } else if (d <= 80) {
+//         colour = '#FF6900'
+//     } else if (d <= 90) {
+//         colour = '#FF3400'
+//     } else if (d > 90) {
+//         colour = '#FF0000'
+//     };
+//     return colour;
+// };
