@@ -1,10 +1,10 @@
 # Earthquakes around the world in the last 7 days (Leaflet *Challenge 15*)
 
-This repository contains a mini-project in which I created a [**world map**](https://daniel-r-murillo-antuna.github.io/leaflet-challenge/Leaflet-Part-1/index.html) with information about all the earthquakes that have occured all around the world in the last seven days.
+This repository contains a mini-project in which I created a [**world map**](https://dan-murillo.github.io/leaflet-challenge/Leaflet-Part-1/index.html) with information about all the earthquakes that have occured all around the world in the last seven days.
 
 ## Author
 
-Daniel Ramón Murillo Antuna [@daniel-r-murillo-antuna](https://www.github.com/daniel-r-murillo-antuna)
+Daniel Ramón Murillo Antuna [@dan-murillo](https://www.github.com/dan-murillo)
 
 ## Repository description
 
